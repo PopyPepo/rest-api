@@ -51,6 +51,7 @@
 
 
 ไฟล์ htaccess.php แก้ไข ชื่อไฟล์ที่ใช้เป็น template
+
 	เปลี่ยน default layout บรรทัดที่ 23
 	$_SESSION['LAYOUT'] = "home";
 
