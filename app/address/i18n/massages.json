@@ -1,0 +1,24 @@
+{"Th": {
+        "domain": "ที่อยู่สมาชิก",
+        "build": "อาคาร/ห้อง",
+        "home_number": "บ้านเลขที่",
+        "village": "หมู่ที่",
+        "road": "ถนน",
+        "district": "ตำบล",
+        "amphur": "อำเภอ",
+        "province": "จังหวัด",
+        "zipcode": "รหัสไปรษณีย์",
+        "member_id": "member_id"
+    },"En": {
+        "domain": "Address",
+        "build": "Build",
+        "home_number": "Home_number",
+        "village": "Village",
+        "road": "Road",
+        "district": "District",
+        "amphur": "Amphur",
+        "province": "Province",
+        "zipcode": "Zipcode",
+        "member_id": "Member_id"
+    }
+}
