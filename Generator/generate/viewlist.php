@@ -39,7 +39,7 @@ function viewlist($conn, $tableIns, $fileIns){
 	$txt .= '
 
 				<div class="card-body">
-					<h4 class="card-title mb-3">{{ massages.default.show+massages.'.$table.'.domain }}</h4>
+					<h4 class="card-title mb-3">{{ massages.default.list+massages.'.$table.'.domain }}</h4>
 					<div class="table-responsive">
 						<table class="table table-hover">
 							<thead class="thead-light">

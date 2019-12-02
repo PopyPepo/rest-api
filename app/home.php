@@ -39,13 +39,13 @@ $PAGE = $DOMAIN."/view/".$ACTION;
 	<link href="<?php echo $ASSETS_URL; ?>assets/css/cusstom.css" rel="stylesheet">
 </head>
 <body class="d-flex flex-column h-100" ng-controller="myAppController">
-<div id="loading" data-loading>
+<!-- <div id="loading" data-loading>
 	<ul class="bokeh">
 		<li></li>
 		<li></li>
 		<li></li>
 	</ul>
-</div>
+</div> -->
 	<header class="mb-1">
 		<nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
 			<div class="container">

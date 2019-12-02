@@ -43,11 +43,11 @@ function '.$table.'Update($conn){
 		}
 
 		$col = str_replace("\'\'", "NULL", $col);
-		$updateSql = "UPDATE '.$table.' SET ".$col." WHERE '.$id->Column_name.'=\'".$id."\'";
+		$updateSql = "UPDATE '.$table.' SET ".$col." WHERE '.$id->Column_name.'=\'".$'.$id->Column_name.'."\'";
 		
 		try {
 			$conn->exec($updateSql);
-			$json["update_id"] = $id;
+			$json["update_id"] = $'.$id->Column_name.';
 			$json["status"] = true;
 		} catch(PDOExecption $e) {
 			$conn->rollback();
