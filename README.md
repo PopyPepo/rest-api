@@ -1,3 +1,7 @@
+เข้าไปที่โฟลเด้อ แล้วพิมพ์คำสั่ง Install Pagket
+
+	npm install @fortawesome/fontawesome-free angular angular-sanitize bootstrap jquery ng-notify
+	
 
 ไฟล์ .htaccess บรรทัดที่ 3 และ 7 แก้ไข ชื่อโฟลเดอร์โปรเจค
 
