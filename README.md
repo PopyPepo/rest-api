@@ -1,6 +1,6 @@
 เข้าไปที่โฟลเด้อ แล้วพิมพ์คำสั่ง Install Pagket
 
-npm install @fortawesome/fontawesome-free angular angular-sanitize bootstrap jquery ng-notify
+	npm install @fortawesome/fontawesome-free angular angular-sanitize bootstrap jquery ng-notify
 
 
 
