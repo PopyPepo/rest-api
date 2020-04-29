@@ -66,8 +66,11 @@
 
 
 ไฟล์ setSession.php กำหนดค่าให้กับตัวแปล $_SESSION 
+
 ไฟล์ getSession.php ดึงค่าตัวแปล $_SESSION
+
 ไฟล์ delSession.php ยกเลิกตัวแปล $_SESSION
+
 
 
 ./app/{table_name}/controller/ เก็บไฟล์ js สำหรับความคุมการทำงานหน้า view และเรียกใช้งาน model
@@ -77,13 +80,21 @@
 ./app/{table_name}/model/ เก็บไฟล์ php ใช้ในการติดต่อฐานข้อมูล
 
 ./app/{table_name}/view/ เก็บไฟล์ html (.php) หน้าแสดงผล
+
 	โดยเบื่องต้นประกอบด้วยไฟล์
+
 	- _form.php		ช่องกรอกข้อมูล สำหรับใช้ในไฟล์ create.php และ edit.php
+
 	- _menu.php		เมนูสำหรับไปหน้าต่าง ๆ ใน โฟลเดอร์
+
 	- create.php	หน้าสำหรับเพิ่มข้อมูล
+
 	- edit.php		หน้าสำหรับแก้ไขปรับปรุงข้อมูล
+
 	- list.php		หน้าสำหรับแสดงข้อมูลหลาย ๆ เรคคอร์ด
+
 	- show.php		หน้าสำหรับแสดงข้อมูลรายละเอียด 1 เรคคอร์ด ด้วยการค้นหาจาก primary key
+	
 
 
 
