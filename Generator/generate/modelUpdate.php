@@ -34,10 +34,11 @@ function '.$table.'Update($conn){
 		$field = getColumname($conn, "'.$table.'");
 		
 		if (isset($_POST["'.$id->Column_name.'"])){	unset($_POST["'.$id->Column_name.'"]);}
+		if (isset($_POST["eventDate"])){	unset($_POST["eventDate"]);}
 		foreach ($_POST as $key=>$value) {	
 			if (in_array($key, $field)){
 				$col.=$c;
-				$col.= $key."=\'".$value."\'";
+				$col.= $key."=\'".addslashes($value)."\'";
 				$c=",";
 			}
 		}

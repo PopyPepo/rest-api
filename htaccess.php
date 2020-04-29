@@ -17,13 +17,20 @@ $LAYOUT = "home";		//default layout
 $template = array("administrator", "auth", "api");		//list template
 $ASSETS_URL="";
 
-# SERVER_URI
+# SERVER_URI 1
 $GURI = str_replace(_DIR . '/','', $_SERVER['REQUEST_URI']);
 $GURI = str_replace("//", "/", $GURI);
 $splitGURI  = explode($FORDER."/", $GURI);
 $GURI = $splitGURI[1];
 $dir = substr($GURI, -1)=="/" ? 0 : 1;
 $URIALL = explode('?',$GURI);
+
+# SERVER_URI 2
+// $GURI = str_replace(_DIR . '/','', $_SERVER['REQUEST_URI']);
+// $GURI = str_replace("//", "/", $GURI."/");
+// $GURI = substr($GURI, 0, 1)=="/" ? substr($GURI, 1) : $GURI;
+// $dir = substr($GURI, -1)=="/" ? 0 : 1;
+// $URIALL = explode('?',$GURI);
 
 $uri_past = cleanArray(explode('/',$URIALL[0]));
 $uri_frist = isset($URIALL[1]) ? (explode('&',$URIALL[1])) : array();
@@ -53,7 +60,4 @@ if (isset($uri_past[0]) && in_array($uri_past[0], $template)){
 	$LINK_URL = $uri_past[0]!=$tmp ? $ASSETS_URL.$LAYOUT."/" : $ASSETS_URL;
 }
 
-$_SESSION['LAYOUT'] = $LAYOUT;
-$_SESSION['ASSETS_URL'] = $ASSETS_URL;
-$_SESSION['LINK_URL'] = $LINK_URL;
 ?>

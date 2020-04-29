@@ -13,7 +13,7 @@ function '.$table.'Insert($conn){
 			if (in_array($key, $field)){
 				$col.=$c;	$val.=$c;
 				$col.=$key;
-				$val.="\'".$value."\'";
+				$val.="\'".addslashes($value)."\'";
 				$c=",";
 			}
 		}
@@ -22,7 +22,7 @@ function '.$table.'Insert($conn){
 
 		try {
 			$conn->exec($insertSql);
-			$json["last_id"] = $conn->lastInsertId();
+			$json["last_id"] = (int)$conn->lastInsertId();
 		} catch(PDOExecption $e) {
 			$conn->rollback();
 			$json["alert"] = $conn->errorInfo();

@@ -3,11 +3,11 @@ error_reporting(E_ALL);
 ob_start();
 ini_set('display_errors', 1);
 date_default_timezone_set("Asia/Bangkok");
-//if (!isset($_SESSION['userauth_cf'])){header("location:".$_SESSION['ASSETS_URL']."auth/");}
-// $userID = isset($_SESSION['memberAuth']) ? $_SESSION['memberAuth']['id'] : null;
+
+$userID = isset($_SESSION['memberAuth']['id']) ? $_SESSION['memberAuth']['id'] : null;
 $DOMAIN = isset($uri_past[0]) && $uri_past[0]!="" ? $uri_past[0] : "layout";
 $ACTION = $DOMAIN=="layout" ? "main" : (isset($uri_past[1]) ? $uri_past[1] : "list");
-$_SESSION['LANG'] = $LANG = isset($_SESSION['LANG']) ? $_SESSION['LANG'] : "Th";
+$LANG = isset($_SESSION['LANG']) ? $_SESSION['LANG'] : "Th";
 $PAGE = $DOMAIN."/view/".$ACTION;
 ?>
 <!DOCTYPE html>
@@ -24,14 +24,13 @@ $PAGE = $DOMAIN."/view/".$ACTION;
 
 	<script type="text/javascript">
 		var PATH = '<?php echo $ASSETS_URL; ?>';
-		// var USERID = '<?php //echo $userID; ?>';
+		var USERID = '<?php echo $userID; ?>';
 		var LANG = '<?php echo $LANG; ?>';
 		var LINK = '<?php echo $LINK_URL; ?>';
-		// console.log(USERID);
 	</script>
 	<script src="<?php echo $ASSETS_URL; ?>node_modules/jquery/dist/jquery.min.js"></script>
 	<script src="<?php echo $ASSETS_URL; ?>node_modules/angular/angular.min.js"></script>
-	<script src="<?php echo $ASSETS_URL; ?>node_modules/angular-sanitize/angular-sanitize.min.js"></script>
+	<script src="<?php echo $ASSETS_URL; ?>node_modules/angular/angular-sanitize.min.js"></script>
 	<script src="<?php echo $ASSETS_URL; ?>node_modules/ng-notify/dist/ng-notify.min.js"></script>
 	<script src="<?php echo $ASSETS_URL; ?>conf/myApp//myApp.js"></script>
 	<script src="<?php echo $ASSETS_URL; ?>conf/myApp/myAppController.js"></script>
@@ -80,7 +79,7 @@ $PAGE = $DOMAIN."/view/".$ACTION;
 
 	<footer class="footer mt-auto pt-1 bg-primary text-white-50">
 		<div class="container mt-3 pb-3">
-			<span class="">MIS@SUT © 2018-2019 v.2.2</span>
+			<span class="">MIS@SUT © 2018-2019 v.2.5</span>
 			<small class="float-right"><address>
 				มหาวิทยาลัยเทคโนโลยีสุรนารี | Suranaree University of Technology<br>
 				ที่อยู่: 111, ถนน มหาวิทยาลัย ตำบล สุรนารี อำเภอเมืองนครราชสีมา นครราชสีมา 30000</address>
@@ -92,6 +91,7 @@ $PAGE = $DOMAIN."/view/".$ACTION;
 	
 	<script src="<?php echo $ASSETS_URL; ?>node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 	<script src="<?php echo $ASSETS_URL; ?>node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="<?php echo $ASSETS_URL; ?>node_modules/popper.js/dist/popper.min.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function(){
 			$('[data-toggle="tooltip"]').tooltip();

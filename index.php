@@ -10,7 +10,6 @@ include_once($_SERVER['DOCUMENT_ROOT']."".$FORDER."/plugin/thaidate/Okvee/Thaida
 include_once($_SERVER['DOCUMENT_ROOT']."".$FORDER."/plugin/thaidate/Okvee/Thaidate/thaidate-functions.php");
 
 $ID = isset($uri_past[2]) ? $uri_past[2] : null;
-$_SESSION['ID'] = $ID;
 include_once("app/".$LAYOUT.".php");
 
 ?>

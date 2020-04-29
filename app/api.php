@@ -1,7 +1,8 @@
 <?php 
+// header('Access-Control-Allow-Origin: *');  
 $PATH = "";
-include($PATH."conf/_header.php");
-include($PATH."conf/_connect.php");
+include($PATH."_header.php");
+include($PATH."_connect.php");
 $conn->PATH = $PATH;
 
 $DOMAIN = isset($uri_past[0]) && $uri_past[0]!="" ? $uri_past[0] : null;

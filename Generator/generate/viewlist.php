@@ -103,10 +103,10 @@ function viewlist($conn, $tableIns, $fileIns){
 					</div>
 				</div>
 
-				<div class="card-footer">
+				<div class="d-block card-footer">
 					<div class="row">
 
-						<div class="col-sm-8 form-inline" ng-show="pagination.perPage < pagination.total">
+						<div class="col-sm-8 form-inline">
 							<div ng-show="pagination.perPage < pagination.total">
 								<button class="btn btn-sm btn-light" ng-click="pagination.page=1;'.$table.'List();" ng-disabled="pagination.page<=1"> 
 									<i class="fas fa-angle-double-left"></i>

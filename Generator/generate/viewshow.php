@@ -70,7 +70,7 @@ function viewshow($conn, $tableIns, $fileIns){
 					
 				</div>
 
-				<div class="card-footer">
+				<div class="d-block card-footer">
 					<a class="btn btn-warning float-right shadow-sm" href="<?php echo $LINK_URL; ?>'.$table.'/edit/{{ '.$table.'Instance.'.$id->Column_name.' }}/"> 
 						<i class="fas fa-edit"></i>
 						แก้ไขข้อมูล

@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('myApp').controller('myAppController', ["$scope", "$http", "$window", 'ngNotify', function($scope, $http, $window, ngNotify){
-	$scope.SUBTITLE = "";
+
 	$scope.LANG = LANG;
 	$scope.languageList = ['Th', 'En'];
 	$scope.massages = {};
@@ -23,7 +23,9 @@ angular.module('myApp').controller('myAppController', ["$scope", "$http", "$wind
 	};
 	
 	$scope.addLang = function(domain, filename="massages"){
-		domainList[domain] = filename;
+		if (!domainList[domain])
+			domainList[domain] = [];
+		domainList[domain].push(filename);
 		setTimeout(function() {
 			$scope.getWordding();
 		}, 50);
@@ -33,7 +35,7 @@ angular.module('myApp').controller('myAppController', ["$scope", "$http", "$wind
 	$scope.setLang = function(lang){
 		$http({
 			method: "POST",
-			url: PATH+"conf/?action=setLang",
+			url: PATH+"setLang.php",
 			data: $.param({LANG: lang}),
 			headers: {"Content-Type": "application/x-www-form-urlencoded"}
 		}).then(function successCallback(response) {
@@ -48,19 +50,57 @@ angular.module('myApp').controller('myAppController', ["$scope", "$http", "$wind
 		});
 	};
 
-
-	$scope.folderInstanceList = [];
-	$scope.getFolder= function(){
+	$scope.setSession = function(auth, secname, page=null){
 		$http({
-			method: "GET",
-			url: PATH+"conf/?action=getFolder",
-			params: $scope.pagination
-		}).then(function successCallback(response) { 
-			$scope.folderInstanceList = response.data.instance;
-		}, function errorCallback(error) {
-			$scope.displayNotify('error', "เกิดข้อผิดพลาด!! ในการแสดรายการข้อมูลประเภททุน");
-			console.log("getFolder list ERROR!!!");
-			console.log(error);
+			method: "POST",
+			url: PATH+"setSession.php?secname="+secname,
+			data: $.param(auth),
+			headers: {"Content-Type": "application/x-www-form-urlencoded"}
+		}).then(function successCallback(response) {
+			console.log(response.data);
+			if (response.data.status){
+				if (page){
+					$window.location.href = PATH+page+"/";
+				}else{
+					$window.location.reload();
+				}
+			}
+		}, function errorCallback(response) {
+			console.log("stadiumController setSession ERROR!!!");
+		});
+	};
+
+	$scope.delSession = function(secname, page=null){
+		$http({
+			method: "POST",
+			url: PATH+"delSession.php",
+			data: $.param({secname: secname}),
+			headers: {"Content-Type": "application/x-www-form-urlencoded"}
+		}).then(function successCallback(response) {
+			if (response.data.status){
+				if (page){
+					$window.location.href = PATH+page+"/";
+				}else{
+					$window.location.reload();
+				}
+			}
+		}, function errorCallback(response) {
+			console.log("myAppController save ERROR!!!");
+		});
+	};
+
+	$scope.getSession = function(secname){
+		$http({
+			method: "POST",
+			url: PATH+"getSession.php",
+			data: $.param({secname: secname}),
+			headers: {"Content-Type": "application/x-www-form-urlencoded"}
+		}).then(function successCallback(response) {
+			if (response.data.status){
+				$scope.adminauthInstance = response.data.instance;
+			}
+		}, function errorCallback(response) {
+			console.log("myAppController save ERROR!!!");
 		});
 	};
 

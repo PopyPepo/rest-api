@@ -29,7 +29,7 @@ function view_form($conn, $tableIns, $fileIns){
 		$span = "";
 		$request = "";
 		
-		if ($instanc->Default!='CURRENT_TIMESTAMP'){
+		if ($instanc->Default!='CURRENT_TIMESTAMP' || $instanc->Extra=='' || $instanc->Extra==null){
 			if ($instanc->Null=='NO'){
 				$span = '<span class="text-danger">*</span>';
 				$request = ' required="required"';

@@ -20,6 +20,7 @@
     border-radius: 50%;    
 }
 </style>
+{{testInstance | json}}
 <div style="height: 400px;">
 	<div id="container"></div>
 </div>
@@ -150,3 +151,28 @@ function welcome() {
 }
 welcome();
 </script>
+
+
+<!-- <div id="con1" ng-controller="myCon1">
+	{{ xa1 }} - {{ x }} | {{ xx }}
+	<button type="button" ng-click="getMyCon2Value();"> get value </button>
+	<div id="con2" ng-controller="myCon2">
+		xa1 = {{ xa1 }}
+	</div>
+</div>
+<script type="text/javascript">
+
+angular.module("myApp").controller("myCon1", ["$scope", "$http", "$window", function($scope, $http, $window){
+	$scope.x = "xxxxxxxxx ";
+
+	$scope.getMyCon2Value = function(){
+		var con1Object = angular.element('#con2').scope();
+		$scope.x = (con1Object.xa1);
+	};
+}]);
+
+angular.module("myApp").controller("myCon2", ["$scope", "$http", "$window", function($scope, $http, $window){
+
+	$scope.xa1 = "$scope.xa1 in myCon2";
+}]);
+</script> -->

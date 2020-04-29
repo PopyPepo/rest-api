@@ -61,7 +61,7 @@ function controllerController($conn, $tableIns, $fileIns){
 			headers: {"Content-Type": "application/x-www-form-urlencoded"}
 		}).then(function successCallback(response) {
 			var last_id = response.data.last_id ? response.data.last_id : null;
-			if (last_id){
+			if (last_id>0){
 				$window.location.href = LINK+"'.$table.'/show/"+last_id+"/";
 			}else{
 				$scope.displayNotify(\'warning\', "เพิ่มข้อมูล'.$title.'ใหม่ไม่สำเร็จ!!");
@@ -78,7 +78,7 @@ function controllerController($conn, $tableIns, $fileIns){
 	$scope.'.$table.'Show= function(id){
 		$http({
 			method: "GET",
-			url: PATH+"app/'.$table.'/model?action='.$table.'Show",
+			url: PATH+"app/'.$table.'/model/?action='.$table.'Show",
 			params: {'.$id->Column_name.': id}
 		}).then(function successCallback(response) {
 			if (response.data.instance){

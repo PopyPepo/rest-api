@@ -12,7 +12,7 @@ function  getFolder($conn){
 	// $list = "'".(implode("','",$a))."'";
 	// $list = str_replace($dir, "", $list);
 
-	$sql = "SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE table_schema='example_db'";
+	$sql = "SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE table_schema='examble_db'";
 	$query = $conn->query($sql);
 	$json['sql'] = $sql;
 

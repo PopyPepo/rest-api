@@ -2,8 +2,8 @@
 function modelindex($conn, $tableIns, $fileIns){
 	$txt='<?php
 $PATH = isset($PATH) ? $PATH : "../../../";
-include($PATH."conf/_header.php");
-include($PATH."conf/_connect.php");
+include($PATH."_header.php");
+include($PATH."_connect.php");
 $conn->PATH = $PATH;
 
 $action = isset($_GET["action"]) ? $_GET["action"] : null;

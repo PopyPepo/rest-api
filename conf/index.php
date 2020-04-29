@@ -1,6 +1,6 @@
 <?php
-include("_header.php");
-include("_connect.php");
+include("../_header.php");
+include("../_connect.php");
 
 $action = isset($_GET["action"]) ? $_GET["action"] : null;
 
