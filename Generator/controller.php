@@ -30,7 +30,7 @@ switch ($action) {
 			$json['message']="yes";
 			if ($handle = opendir($foder)) {
 				while (false !== ($entry = readdir($handle))) {
-					if (strlen($entry)>5){ 
+					if (strlen($entry)>3){ 
 
 						$json['instance'][] = $entry;
 					}
@@ -39,19 +39,31 @@ switch ($action) {
 			}
 
 			$file = ($_GET['forderName']);
-			if (file_exists("../controller/".$file."Controller.js")){ 
-				// $json.=$c; 
-				// $json.=json_encode($file."Controller.js"); 
-				// $c=",";
+
+			if (file_exists($foder."/controller/".$file."Controller.js")){ 
 				$json['instance'][]=$file."Controller.js";
 			}
-
-			if (file_exists("../model/".$file."Controller.php")){ 
-				// $json.=$c; 
-				// $json.=json_encode($file."Controller.php"); 
-				// $c=",";
-				$json['instance'][]=$file."Controller.php";
+			if (file_exists($foder."/i18n/massages.json")){ 
+				$json['instance'][]="massages.json";
 			}
+			if (file_exists($foder."/model/index.php")){ 
+				$json['instance'][]="index.php";
+			}
+
+			$f = array(
+				"model"=>array($file."Insert.php", $file."Show.php", $file."List.php", $file."Update.php", $file."Delete.php"), 
+				"view"=>array("_menu.php", "create.php", "list.php", "show.php", "edit.php", "_form.php")
+			);
+			
+			foreach ($f as $fol => $fis) {
+				foreach ($fis as $xname) {
+					if (file_exists($foder."/".$fol."/".$xname)){ 
+						$json['instance'][]=$xname;
+					}
+				}
+			}
+
+
 			// $json.=$c;
 			$json['instance'][] = "1";
 		}else{
@@ -98,23 +110,27 @@ switch ($action) {
 
 		$table = $_POST['table'];
 		$files = $_POST['files'];
-		$functionFile = $files['path'].($files['path']=='controller' ? "Controller.php" : ($files['file'] ? $files['file'] : ($files['path']=='i18n' ? 'massages.php' : 'index.php')));
+		$functionFile = $files['path'].$files['file'];
 		
-		$filname = "../app/".$table['TABLE_NAME']."/".$files['path']."/";
+		echo $filname = "../app/".$table['TABLE_NAME']."/".$files['path']."/".$files['file'];
 
-		if ($files['path']=='controller'){
-			$filname .= $table['TABLE_NAME']."Controller.js";
-		}else if ($files['path']=='view'){
-			$filname .= $files['file'];
-		}else{
-			$filname .= ($files['file'] ? $table['TABLE_NAME'].$files['file'] : ($files['path']=='i18n' ? 'massages.json' : 'index.php'));
-		}
+		// if ($files['path']=='i18n'){
+		// 	$filname .= $table['TABLE_NAME']."Controller.js";
+		// }
+		//else if ($files['path']=='view'){
+		// 	$filname .= $files['file'];
+		// }else{
+		// 	$filname .= ($files['file'] ? $table['TABLE_NAME'].$files['file'] : ($files['path']=='i18n' ? 'massages.json' : 'index.php'));
+		// }
 
-		$functionName = str_replace(".php", "", $functionFile);
+		$functionFile = str_replace(".json", "", $functionFile);
+		$functionFile = str_replace(".php", "", $functionFile);
+		$functionFile = str_replace(".js", "", $functionFile);
+		$functionFile = str_replace($table['TABLE_NAME'], "", $functionFile);
 
-		include("generate/".$functionFile);
+		include("generate/".$functionFile.".php");
 		$table['database'] = $database;
-		$html = $functionName($conn, $table, $files);
+		$html = $functionFile($conn, $table, $files);
 
 		$objCreate = fopen($filname, 'wb');
 		$ex = fwrite($objCreate, $html);

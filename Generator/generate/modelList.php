@@ -28,23 +28,26 @@ function modelList($conn, $tableIns, $fileIns){
 	$txt = '<?php
 function '.$table.'List($conn){
 	$json = array();
+	$json[\'pagination\'] = $_GET;
 	
 	$perPage = isset($_GET["perPage"]) ? $_GET["perPage"] : '.$perPage.';
 	$page = isset($_GET["page"]) ? $_GET["page"] : 1;
 	$pageStart = ($page-1)*$perPage;
 
-	$sql = "SELECT * FROM '.$table.' LIMIT ".$pageStart.",".$perPage;
-	$query = $conn->query($sql);
+	$where = "1";
+	$limit = " LIMIT ".$pageStart.",".$perPage;
+	
+	$sql = "SELECT * FROM '.$table.' WHERE ".$where;
 
+	$query = $conn->query($sql.$limit);
 	$json["instance"] = array();
 	while ($instance=$query->fetch(PDO::FETCH_ASSOC)) {
 		$json["instance"][] = $instance;
 	}
 
-	$sqlCount = "SELECT count('.$id->Column_name.') AS total FROM '.$table.'";
-	$total = $conn->query($sqlCount)->fetchColumn();
 
-	$json[\'pagination\'] = array();
+	$total = $conn->query($sql)->fetchColumn();
+	
 	$json[\'pagination\'][\'total\'] = intval($total);
 	$json[\'pagination\'][\'page\'] = intval($page);
 	$json[\'pagination\'][\'pageStart\'] = intval($pageStart);

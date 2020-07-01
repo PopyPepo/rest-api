@@ -3,16 +3,23 @@
 		<a class="nav-link" href="<?php echo $LINK_URL; ?>">{{ massages.default.home }}</a>
 	</li>
 	<li class="nav-item">
-		<a class="nav-link" href="<?php echo $LINK_URL; ?>member/">
+		<a class="nav-link" href="<?php echo $LINK_URL; ?>admin/">
 			<i class="fas fa-book"></i>
-			member
+			admin
 		</a>
 	</li>
 	
 	<li class="nav-item">
-		<a class="nav-link" href="<?php echo $LINK_URL; ?>address/">
+		<a class="nav-link" href="<?php echo $LINK_URL; ?>countries/">
 			<i class="fas fa-book"></i>
-			address
+			countries
+		</a>
+	</li>
+	
+	<li class="nav-item">
+		<a class="nav-link" href="<?php echo $LINK_URL; ?>states/">
+			<i class="fas fa-book"></i>
+			states
 		</a>
 	</li>
 	<li class="nav-item dropdown">
@@ -26,15 +33,3 @@
 		</div>
 	</li>
 </ul>
-
-<!-- <ul class="navbar-nav">
-	<li class="nav-item">
-		<a class="nav-link" href="<?php // echo $LINK_URL; ?>">หน้าแรก</a>
-	</li>
-	<li class="nav-item">
-		<a class="nav-link" href="<?php // echo $LINK_URL; ?>member/list/">จัดการข้อมูลสมาชิค</a>
-	</li>
-	<li class="nav-item">
-		<a class="nav-link" href="<?php // echo $LINK_URL; ?>address/list/">จัดการข้อมูลที่อยู่สมาชิก</a>
-	</li>
-</ul> -->

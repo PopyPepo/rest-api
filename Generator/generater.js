@@ -10,10 +10,9 @@ angular.module("myApp", []).controller('generateAll', ['$scope', '$http', functi
 		{name:'Form ฟอร์มกรอกข้อมูล', file: '_form', type: 'view'}
 	];*/  
 
-
-	$scope.functioninstance = [
+	$scope.tmpFile = [
 		/* model .php */
-		{file: '', path: 'model'},// index.php
+		{file: 'index.php', path: 'model'},// index.php
 		{file: 'Insert.php', path: 'model'},
 		{file: 'Show.php', path: 'model'},
 		{file: 'List.php', path: 'model'},
@@ -29,8 +28,11 @@ angular.module("myApp", []).controller('generateAll', ['$scope', '$http', functi
 		{file: 'edit.php', path: 'view'},
 		{file: '_form.php', path: 'view'},
 		/* i18n .json*/
-		{file: '', path: 'i18n'}
+		{file: 'massages.json', path: 'i18n'}
 	];
+
+
+	$scope.functioninstance = [];
 	$scope.tableList = [];     
 	$scope.tableInstance = null;
 	$scope.foderInstance = [];
@@ -49,10 +51,38 @@ angular.module("myApp", []).controller('generateAll', ['$scope', '$http', functi
 	$scope.list();
 
 	$scope.setTable = function(ins){
+		$scope.functioninstance = [
+			/* model .php */
+			{file: 'index.php', path: 'model'},// index.php
+			{file: ins.TABLE_NAME+'Insert.php', path: 'model'},
+			{file: ins.TABLE_NAME+'Show.php', path: 'model'},
+			{file: ins.TABLE_NAME+'List.php', path: 'model'},
+			{file: ins.TABLE_NAME+'Update.php', path: 'model'},
+			{file: ins.TABLE_NAME+'Delete.php', path: 'model'},
+			/* controller .js*/
+			{file: ins.TABLE_NAME+'Controller.js', path: 'controller'},
+			/* view html .php*/
+			{file: '_menu.php', path: 'view'},
+			{file: 'create.php', path: 'view'},
+			{file: 'list.php', path: 'view'},
+			{file: 'show.php', path: 'view'},
+			{file: 'edit.php', path: 'view'},
+			{file: '_form.php', path: 'view'},
+			/* i18n .json*/
+			{file: 'massages.json', path: 'i18n'}
+		];
 		//var TABLE_NAME = ins.TABLE_NAME.charAt(0).toUpperCase() + ins.TABLE_NAME.substr(1).toLowerCase();
 		//$scope.functioninstance.push({name:'Controller '+ins.TABLE_COMMENT, file: 'controller'+TABLE_NAME+'.php', type: 'controller'});
 		// $scope.functioninstance[0] = {name:'Model '+ins.TABLE_COMMENT, file: ins.TABLE_NAME, type: 'model'};
 		// $scope.functioninstance[1] = {name:'Controller '+ins.TABLE_COMMENT, file: ins.TABLE_NAME+'Controller', type: 'controller'};
+		// $scope.functioninstance = $scope.tmpFile;
+		// $scope.functioninstance[1].file = ins.TABLE_NAME+$scope.functioninstance[1].file;
+		// $scope.functioninstance[2].file = ins.TABLE_NAME+$scope.functioninstance[2].file;
+		// $scope.functioninstance[3].file = ins.TABLE_NAME+$scope.functioninstance[3].file;
+		// $scope.functioninstance[4].file = ins.TABLE_NAME+$scope.functioninstance[4].file;
+		// $scope.functioninstance[5].file = ins.TABLE_NAME+$scope.functioninstance[5].file;
+		// $scope.functioninstance[6].file = ins.TABLE_NAME+$scope.functioninstance[6].file;
+
 		$scope.tableInstance = ins;
 		getFoderInstance(ins);
 	};
@@ -93,7 +123,6 @@ angular.module("myApp", []).controller('generateAll', ['$scope', '$http', functi
 			headers: {"Content-Type": "application/x-www-form-urlencoded"}
 		}).then(function successCallback(response) {
 			console.log(response.data);
-			//$scope.setTable(ins);
 		}, function errorCallback(error) {
 			console.log('createFile list '+error);
 		});

@@ -1,6 +1,6 @@
 เข้าไปที่โฟลเด้อ แล้วพิมพ์คำสั่ง Install Pagket
 
-	npm install @fortawesome/fontawesome-free angular bootstrap jquery ng-notify angular-file-upload popper.js
+	npm install @fortawesome/fontawesome-free angular@1.8.0 angular-sanitize bootstrap jquery-slim ng-notify angular-file-upload popper.js@1.14.7 --save
 
 
 ไฟล์ _connect.php บรรทัดที่ 3-6 แก้ไขการเชื่อมต่อฐานข้อมูล

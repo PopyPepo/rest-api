@@ -10,7 +10,7 @@ $action = isset($_GET["action"]) ? $_GET["action"] : null;
 
 $actionFile = $action.".php";
 if (file_exists($actionFile)){
-	
+	unset($_GET["action"]);
 	include($actionFile);
 
 	if (function_exists($action)){

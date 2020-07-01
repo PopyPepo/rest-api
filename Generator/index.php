@@ -47,14 +47,11 @@
 			</legend>
 			
 
-			<center ng-show="!foderInstance">
-				<button ng-click="createForder(tableInstance);">สร้างโฟลเดอร์ 
+			<div class="text-center" ng-show="!foderInstance">
+				<button class="btn btn-warning btn-lg mx-auto" ng-click="createForder(tableInstance);">สร้างโฟลเดอร์ 
 					{{ tableInstance.TABLE_NAME }} {{ tableInstance.TABLE_COMMENT ? " ("+tableInstance.TABLE_COMMENT+")" : "" }}
 				</button>
-			</center>
-
-
-
+			</div>
 			<table border="1" width="100%" ng-show="foderInstance">
 				<thead class="text-danger">
 					<th>Function</th>
@@ -66,22 +63,37 @@
 				<tbody>
 
 					<tr ng-repeat="fileInstance in functioninstance" onmouseover="this.style.background='antiquewhite';" onmouseout="this.style.background='none';"> 
+						<!-- Function -->
 						<td>{{ fileInstance.path }} {{ fileInstance.file }} 
 							{{ tableInstance.TABLE_COMMENT ? tableInstance.TABLE_COMMENT : tableInstance.TABLE_NAME }}
 							{{ fileInstance.suc }}
 						</td>
-						<td>{{ fileInstance.file ? tableInstance.TABLE_NAME+fileInstance.file : 'index.php' }}</td>
+
+						<!-- Filename -->
+						<td>{{ fileInstance.file }}</td>
+						
+						<!-- Path -->
 						<td>
 
 							{ROOT_PROJECT} / app / {{ tableInstance.TABLE_NAME }} / {{ fileInstance.path }} 
-							/ {{ fileInstance.file ? tableInstance.TABLE_NAME+fileInstance.file : (fileInstance.path=='i18n' ? 'massages.json' : 'index.php') }}
+							/ {{ fileInstance.file }}
 
-							<!-- {{ fileInstance.path=='controller' ? tableInstance.TABLE_NAME+fileInstance.file : tableInstance.TABLE_NAME+'/'+(fileInstance.file ? tableInstance.TABLE_NAME+fileInstance.file : 'index.php') }} -->
 						</td>
+
+						<!-- button -->
 						<td align="center">
-							<button class="btn btn-info btn-xs" ng-click="createFile(tableInstance, fileInstance);setTable(tableInstance);">
+							<button ng-show="foderInstance.indexOf(fileInstance.file)<0" class="btn btn-info btn-xs" ng-click="createFile(tableInstance, fileInstance);setTable(tableInstance);">
 								Genedate File
 							</button>
+
+							<button ng-show="foderInstance.indexOf(fileInstance.file)>=0" class="btn btn-warning btn-xs" ng-click="btncon=true;">
+								Overwrite File
+							</button>
+
+							<div class="btn-group" role="group" aria-label="Basic example" ng-show="btncon">
+								<button type="button" class="btn btn-secondary" ng-click="createFile(tableInstance, fileInstance);setTable(tableInstance);btncon=false;">Yes</button>
+								<button type="button" class="btn btn-secondary" ng-click="btncon=false;">no</button>
+							</div>
 						</td>
 					</tr>
 

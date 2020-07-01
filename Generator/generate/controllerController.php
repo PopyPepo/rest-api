@@ -35,7 +35,7 @@ function controllerController($conn, $tableIns, $fileIns){
 	$sql = "SHOW FULL COLUMNS FROM ".$table." WHERE Extra!='auto_increment' ";
 	$excute = $conn->query($sql);
 	while ($instanc = $excute->fetch(PDO::FETCH_OBJ)){
-		if (isset($instanc->Default) && $instanc->Default!='CURRENT_TIMESTAMP'){
+		if (isset($instanc->Default) && $instanc->Default!='CURRENT_TIMESTAMP' && $instanc->Default!='CURRENT_TIMESTAMP()'){
 			$txt .= '
 	$scope.'.$table.'Instance.'.$instanc->Field.' = "'.$instanc->Default.'";';
 		}

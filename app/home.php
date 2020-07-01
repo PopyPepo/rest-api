@@ -28,9 +28,9 @@ $PAGE = $DOMAIN."/view/".$ACTION;
 		var LANG = '<?php echo $LANG; ?>';
 		var LINK = '<?php echo $LINK_URL; ?>';
 	</script>
-	<script src="<?php echo $ASSETS_URL; ?>node_modules/jquery/dist/jquery.min.js"></script>
+	<script src="<?php echo $ASSETS_URL; ?>node_modules/jquery-slim/dist/jquery.slim.min.js"></script>
 	<script src="<?php echo $ASSETS_URL; ?>node_modules/angular/angular.min.js"></script>
-	<script src="<?php echo $ASSETS_URL; ?>node_modules/angular/angular-sanitize.min.js"></script>
+	<script src="<?php echo $ASSETS_URL; ?>node_modules/angular-sanitize/angular-sanitize.min.js"></script>
 	<script src="<?php echo $ASSETS_URL; ?>node_modules/ng-notify/dist/ng-notify.min.js"></script>
 	<script src="<?php echo $ASSETS_URL; ?>conf/myApp//myApp.js"></script>
 	<script src="<?php echo $ASSETS_URL; ?>conf/myApp/myAppController.js"></script>
@@ -88,10 +88,10 @@ $PAGE = $DOMAIN."/view/".$ACTION;
 	</footer>
 
 
-	
+	<script src="<?php echo $ASSETS_URL; ?>node_modules/popper.js/dist/popper.min.js"></script>
 	<script src="<?php echo $ASSETS_URL; ?>node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 	<script src="<?php echo $ASSETS_URL; ?>node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-	<script src="<?php echo $ASSETS_URL; ?>node_modules/popper.js/dist/popper.min.js"></script>
+	
 	<script type="text/javascript">
 		$(document).ready(function(){
 			$('[data-toggle="tooltip"]').tooltip();
