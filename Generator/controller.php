@@ -1,5 +1,5 @@
 <?php 
-include("../conf/_connect.php");
+include("../_connect.php");
 ob_start();
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
