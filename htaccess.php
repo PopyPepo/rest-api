@@ -44,7 +44,7 @@ if(is_array($uri_frist)){
 	}
 }
 $dir-= count($uri) ? 1 : 0;
-$_SESSION['PARAMS'] = $uri;
+$PARAMS = array_slice($uri_past, 4);
 
 for($i=0;$i<count($uri_past)-$dir;$i++){ $ASSETS_URL.="../"; }
 

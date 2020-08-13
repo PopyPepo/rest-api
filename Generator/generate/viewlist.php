@@ -87,11 +87,11 @@ function viewlist($conn, $tableIns, $fileIns){
 
 									<td class="text-center">
 										<div class="btn-group btn-group-sm" role="group" aria-label="Small button group">
-											<a href="<?php echo $LINK_URL; ?>'.$table.'/show/{{'.$table.'.'.$id->Column_name.'}}/" data-toggle="tooltip" data-placement="bottom" title="แสดงข้อมูล" class="btn btn-info">
+											<a href="<?php echo $LINK_URL; ?>'.$table.'/show/{{'.$table.'.'.$id->Column_name.'}}/"  title="แสดงข้อมูล" class="btn btn-info">
 												<i class="fas fa-info-circle"></i> 
 												
 											</a>
-											<button type="button" class="btn btn-danger" data-toggle="tooltip" data-placement="bottom" ng-confirm-click="คุณแน่ใจว่าต้องการลบข้อมูล ใช่หรือไม่?" title="ลบข้อมูล" confirmed-click="'.$table.'Delete('.$table.'.'.$id->Column_name.');">
+											<button type="button" class="btn btn-danger" ng-confirm-click="คุณแน่ใจว่าต้องการลบข้อมูล ใช่หรือไม่?" title="ลบข้อมูล" confirmed-click="'.$table.'Delete('.$table.'.'.$id->Column_name.');">
 												<i class="fas fa-trash-alt"></i> 
 												
 											</button>
