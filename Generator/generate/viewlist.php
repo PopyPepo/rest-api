@@ -86,7 +86,7 @@ function viewlist($conn, $tableIns, $fileIns){
 								$txt .= '
 
 									<td class="text-center">
-										<div class="btn-group btn-group-sm" role="group" aria-label="Small button group">
+										<div class="btn-group btn-group-sm">
 											<a href="<?php echo $LINK_URL; ?>'.$table.'/show/{{'.$table.'.'.$id->Column_name.'}}/"  title="แสดงข้อมูล" class="btn btn-info">
 												<i class="fas fa-info-circle"></i> 
 												

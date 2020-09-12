@@ -44,7 +44,6 @@ if(is_array($uri_frist)){
 	}
 }
 $dir-= count($uri) ? 1 : 0;
-$PARAMS = array_slice($uri_past, 4);
 
 for($i=0;$i<count($uri_past)-$dir;$i++){ $ASSETS_URL.="../"; }
 
@@ -59,5 +58,5 @@ if (isset($uri_past[0]) && in_array($uri_past[0], $template)){
 	$ASSETS_URL.= count($uri_past) > 1 ? "" : "../";
 	$LINK_URL = $uri_past[0]!=$tmp ? $ASSETS_URL.$LAYOUT."/" : $ASSETS_URL;
 }
-
+$PARAMS = array_slice($uri_past, 3);
 ?>

@@ -45,8 +45,10 @@ function '.$table.'List($conn){
 		$json["instance"][] = $instance;
 	}
 
-
-	$total = $conn->query($sql)->fetchColumn();
+	$sqlCount = "SELECT count('.$id->Column_name.') AS total FROM '.$table.' WHERE".$where;
+	$result = $conn->prepare($sqlCount); 
+	$result->execute();
+	$total = $result->fetchColumn();
 	
 	$json[\'pagination\'][\'total\'] = intval($total);
 	$json[\'pagination\'][\'page\'] = intval($page);

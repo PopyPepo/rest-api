@@ -3,7 +3,7 @@ error_reporting(E_ALL);
 ob_start();
 ini_set('display_errors', 1);
 date_default_timezone_set("Asia/Bangkok");
-if (!isset($_SESSION['admin'])){header("location:".$ASSETS_URL."auth/");}
+//if (!isset($_SESSION['admin'])){header("location:".$ASSETS_URL."auth/");}
 $userID = isset($_SESSION['admin']['id']) ? $_SESSION['admin']['id'] : null;
 $DOMAIN = isset($uri_past[0]) && $uri_past[0]!="" ? $uri_past[0] : "layout";
 $ACTION = $DOMAIN=="layout" ? "main" : (isset($uri_past[1]) ? $uri_past[1] : "list");
