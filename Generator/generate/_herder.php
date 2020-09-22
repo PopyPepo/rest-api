@@ -1,7 +1,7 @@
 <?php 
 $txt .= '<script src="<?php echo $ASSETS_URL; ?>app/'.$table.'/controller/'.$table.'Controller.js"></script>
 <div ng-controller="'.$table.'Controller" '.$init.'>
-	<?php include "app/'.$table.'/view/_menu.php"; ?>
+	<?php //include "app/'.$table.'/view/_menu.php"; ?>
 
 	<div class="row">
 		<div class="col-sm-12">

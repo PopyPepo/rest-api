@@ -39,6 +39,7 @@ function viewlist($conn, $tableIns, $fileIns){
 	$txt .= '
 
 				<div class="card-body">
+					<?php include "app/'.$table.'/view/_menu.php"; ?>
 					<h4 class="card-title mb-3">{{ massages.default.list+massages.'.$table.'.domain }}</h4>
 					<div class="table-responsive">
 						<table class="table table-hover">
@@ -86,7 +87,7 @@ function viewlist($conn, $tableIns, $fileIns){
 								$txt .= '
 
 									<td class="text-center">
-										<div class="btn-group btn-group-sm">
+										<div class="btn-group btn-group-sm" role="group" aria-label="Small button group">
 											<a href="<?php echo $LINK_URL; ?>'.$table.'/show/{{'.$table.'.'.$id->Column_name.'}}/"  title="แสดงข้อมูล" class="btn btn-info">
 												<i class="fas fa-info-circle"></i> 
 												

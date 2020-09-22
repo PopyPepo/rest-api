@@ -13,9 +13,18 @@ $table = $tableIns['TABLE_NAME'];
     $sql = "SHOW FULL COLUMNS FROM ".$table." WHERE Extra!='auto_increment' ";
     $excute = $conn->query($sql);
     $th .= '
-        "domain": "'.$title.'"';
+        "domain": "'.$title.'",
+        "list": "รายการข้อมูล '.$title.'",
+        "show": "แสดงข้อมูล '.$title.'",
+        "create": " เพิ่มข้อมูล '.$title.'",
+        "edit": "แก้ไขข้อมูล '.$title.'"';
+    $TITLE = ucfirst($tableInstanc->TABLE_NAME);
     $en .= '
-        "domain": "'.ucfirst($tableInstanc->TABLE_NAME).'"';
+        "domain": "'.$TITLE.'",
+        "list": "List '.$TITLE.'",
+        "show": "Detail '.$TITLE.'",
+        "create": "Create '.$TITLE.'",
+        "edit": "Edit '.$TITLE.'"';
     $c = ",";
 	while ($instanc = $excute->fetch(PDO::FETCH_OBJ)){
         $label = "";

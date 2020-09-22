@@ -34,7 +34,7 @@ function '.$table.'List($conn){
 	$page = isset($_GET["page"]) ? $_GET["page"] : 1;
 	$pageStart = ($page-1)*$perPage;
 
-	$where = "1";
+	$where = "1";//"active>0";
 	$limit = " LIMIT ".$pageStart.",".$perPage;
 	
 	$sql = "SELECT * FROM '.$table.' WHERE ".$where;
@@ -45,7 +45,7 @@ function '.$table.'List($conn){
 		$json["instance"][] = $instance;
 	}
 
-	$sqlCount = "SELECT count('.$id->Column_name.') AS total FROM '.$table.' WHERE".$where;
+	$sqlCount = "SELECT count('.$id->Column_name.') AS total FROM '.$table.' WHERE ".$where;
 	$result = $conn->prepare($sqlCount); 
 	$result->execute();
 	$total = $result->fetchColumn();

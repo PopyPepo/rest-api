@@ -30,6 +30,7 @@ function '.$table.'Delete($conn){
 	$id = isset($_POST["'.$id->Column_name.'"]) ? $_POST["'.$id->Column_name.'"] : null;
 	if ($id){
 		$deleteSql = "DELETE FROM '.$table.' WHERE '.$id->Column_name.'=\'".$id."\'";
+		//$deleteSql = "UPDATE '.$table.' SET active=0 WHERE '.$id->Column_name.'=\'".$id."\'";
 
 		try {
 			$conn->exec($deleteSql);
