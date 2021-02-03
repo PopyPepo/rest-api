@@ -14,8 +14,6 @@ function viewcreate($conn, $tableIns, $fileIns){
 	$txt.='	
 
 				<div class="card-body">
-					<?php include "app/'.$table.'/view/_menu.php"; ?>
-					<h4 class="card-title mb-3">{{ massages.default.create+massages.'.$table.'.domain }}</h4>
 					<form name="'.$table.'Form" method="post" ng-submit="'.$table.'Insert('.$table.'Instance);">
 						<?php include("app/'.$table.'/view/_form.php"); ?>';
 

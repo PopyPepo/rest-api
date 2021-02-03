@@ -1,0 +1,26 @@
+{"Th": {
+        "domain": "สมาชิก",
+        "list": "รายการข้อมูล สมาชิก",
+        "show": "แสดงข้อมูล สมาชิก",
+        "create": " เพิ่มข้อมูล สมาชิก",
+        "edit": "แก้ไขข้อมูล สมาชิก",
+        "name": "ชื่อจริง",
+        "lastname": "นามสกุล",
+        "phone": "เบอร์โทรศัพท์",
+        "email": "อีเมล",
+        "gender": "เพศ",
+        "birthday": "วันเกิด"
+    },"En": {
+        "domain": "Member",
+        "list": "List Member",
+        "show": "Detail Member",
+        "create": "Create Member",
+        "edit": "Edit Member",
+        "name": "Name",
+        "lastname": "Lastname",
+        "phone": "Phone",
+        "email": "Email",
+        "gender": "Gender",
+        "birthday": "Birthday"
+    }
+}

@@ -1,9 +1,9 @@
 <?php
-function adminInsert($conn){
+function memberInsert($conn){
 	$json = array();
-	if (isset($_POST) && $_POST){
+	if (isset($_POST) && !empty($_POST)){
 		include($conn->PATH."conf/getColumname.php");
-		$field = getColumname($conn, "admin");
+		$field = getColumname($conn, "member");
 		$col = "";	$val = "";	$c="";
 		foreach ($_POST as $key=>$value) {
 			if (in_array($key, $field)){
@@ -14,7 +14,7 @@ function adminInsert($conn){
 			}
 		}
 		$val = str_replace("''", "NULL", $val);
-		$insertSql = "INSERT INTO admin (".$col.") VALUES (".$val.")";
+		$insertSql = "INSERT INTO member (".$col.") VALUES (".$val.")";
 
 		try {
 			$conn->exec($insertSql);

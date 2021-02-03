@@ -1,10 +1,10 @@
 <?php
-function adminDelete($conn){
+function addressDelete($conn){
 	$json = array();
-	$id = isset($_POST["idadmin"]) ? $_POST["idadmin"] : null;
+	$id = isset($_POST["id_address"]) ? $_POST["id_address"] : null;
 	if ($id){
-		// $deleteSql = "DELETE FROM admin WHERE idadmin='".$id."'";
-		$deleteSql = "UPDATE admin SET active=0 WHERE idadmin='".$id."'";
+		$deleteSql = "DELETE FROM address WHERE id_address='".addslashes($id)."'";
+		//$deleteSql = "UPDATE address SET active=0 WHERE id_address='".addslashes($id)."'";
 
 		try {
 			$conn->exec($deleteSql);

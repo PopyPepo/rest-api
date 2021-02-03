@@ -1,11 +1,17 @@
 <?php 
 $txt .= '<script src="<?php echo $ASSETS_URL; ?>app/'.$table.'/controller/'.$table.'Controller.js"></script>
 <div ng-controller="'.$table.'Controller" '.$init.'>
-	<?php //include "app/'.$table.'/view/_menu.php"; ?>
+	
 
 	<div class="row">
 		<div class="col-sm-12">
 			<div class="card shadow">
+					
+				<div class="card-header d-flex align-items-center justify-content-between">
+					<h4 class="mb-0">{{ massages.default.show+massages.'.$table.'.domain }}</h4>
+					<?php include "app/'.$table.'/view/_menu.php"; ?>
+				</div>
+				
 '; 
 // <div class="card-header">
 // 					<div class="card-head-row card-tools-still-right">

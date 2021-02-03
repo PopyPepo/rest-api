@@ -38,8 +38,7 @@ function viewshow($conn, $tableIns, $fileIns){
 	$txt .= '
 
 				<div class="card-body">
-					<?php include "app/'.$table.'/view/_menu.php"; ?>
-					<h4 class="card-title mb-3">{{ massages.default.show+massages.'.$table.'.domain }}</h4>
+					
 					<div class="table-responsive">
 						<table class="table table-show table-sm border-bottom">
 							<tbody>';

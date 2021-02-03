@@ -28,7 +28,7 @@ $PAGE = $DOMAIN."/view/".$ACTION;
 
 	<!-- Favicon icon -->
 	<link rel="icon" href="<?php echo $ASSETS_URL; ?>assets/images/favicon.ico" type="image/x-icon">
-
+	
 	<script type="text/javascript">
 		var PATH = '<?php echo $ASSETS_URL; ?>';
 		// var USERID = '<?php //echo $userID; ?>';
@@ -39,6 +39,8 @@ $PAGE = $DOMAIN."/view/".$ACTION;
 	<script src="<?php echo $ASSETS_URL; ?>node_modules/angular/angular.min.js"></script>
 	<script src="<?php echo $ASSETS_URL; ?>node_modules/angular-sanitize/angular-sanitize.min.js"></script>
 	<script src="<?php echo $ASSETS_URL; ?>node_modules/ng-notify/dist/ng-notify.min.js"></script>
+	<script src="<?php echo $ASSETS_URL; ?>assets/js/quill/quill.js"></script>
+	<script src="<?php echo $ASSETS_URL; ?>node_modules/ng-quill/src/ng-quill.js"></script>
 	<script src="<?php echo $ASSETS_URL; ?>conf/myApp//myApp.js"></script>
 	<script src="<?php echo $ASSETS_URL; ?>conf/myApp/myAppController.js"></script>
 	<!-- CSS cusstom -->
@@ -48,8 +50,8 @@ $PAGE = $DOMAIN."/view/".$ACTION;
 	<link rel="stylesheet" href="<?php echo $ASSETS_URL; ?>assets/css/plugins/prism-coy.css">
 	<!-- vendor css -->
 	<link rel="stylesheet" href="<?php echo $ASSETS_URL; ?>assets/css/style.css">
-	
-	
+	<link rel="stylesheet" href="<?php echo $ASSETS_URL; ?>assets/css/quill/quill.snow.css">
+	<link rel="stylesheet" href="<?php echo $ASSETS_URL; ?>assets/css/quill/quill.bubble.css">	
 
 </head>
 

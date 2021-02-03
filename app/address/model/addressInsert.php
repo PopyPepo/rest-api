@@ -1,24 +1,20 @@
 <?php
-function modelInsert($conn, $tableIns, $fileIns){
-
-	$table = $tableIns['TABLE_NAME'];
-	$txt = '<?php
-function '.$table.'Insert($conn){
+function addressInsert($conn){
 	$json = array();
 	if (isset($_POST) && !empty($_POST)){
 		include($conn->PATH."conf/getColumname.php");
-		$field = getColumname($conn, "'.$table.'");
+		$field = getColumname($conn, "address");
 		$col = "";	$val = "";	$c="";
 		foreach ($_POST as $key=>$value) {
 			if (in_array($key, $field)){
 				$col.=$c;	$val.=$c;
 				$col.=$key;
-				$val.="\'".addslashes($value)."\'";
+				$val.="'".addslashes($value)."'";
 				$c=",";
 			}
 		}
-		$val = str_replace("\'\'", "NULL", $val);
-		$insertSql = "INSERT INTO '.$table.' (".$col.") VALUES (".$val.")";
+		$val = str_replace("''", "NULL", $val);
+		$insertSql = "INSERT INTO address (".$col.") VALUES (".$val.")";
 
 		try {
 			$conn->exec($insertSql);
@@ -33,10 +29,5 @@ function '.$table.'Insert($conn){
 	}
 
 	return $json;
-}
-?>';
-
-
-	return $txt;
 }
 ?>

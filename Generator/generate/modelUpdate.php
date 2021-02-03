@@ -28,7 +28,7 @@ function modelUpdate($conn, $tableIns, $fileIns){
 function '.$table.'Update($conn){
 	$json = array();
 	$'.$id->Column_name.' = isset($_GET["'.$id->Column_name.'"]) ? $_GET["'.$id->Column_name.'"] : (isset($_POST["'.$id->Column_name.'"]) ? $_POST["'.$id->Column_name.'"] : null);
-	if ($'.$id->Column_name.' && isset($_POST) && $_POST){
+	if ($'.$id->Column_name.' && isset($_POST) && !empty($_POST)){
 		$col = "";	$val = "";	$c="";
 		include($conn->PATH."conf/getColumname.php");
 		$field = getColumname($conn, "'.$table.'");
@@ -44,7 +44,7 @@ function '.$table.'Update($conn){
 		}
 
 		$col = str_replace("\'\'", "NULL", $col);
-		$updateSql = "UPDATE '.$table.' SET ".$col." WHERE '.$id->Column_name.'=\'".$'.$id->Column_name.'."\'";
+		$updateSql = "UPDATE '.$table.' SET ".$col." WHERE '.$id->Column_name.'=\'".addslashes($'.$id->Column_name.')."\'";
 		
 		try {
 			$conn->exec($updateSql);

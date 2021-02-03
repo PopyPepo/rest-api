@@ -27,7 +27,7 @@ $LANG = isset($_SESSION['LANG']) ? $_SESSION['LANG'] : "Th";
 	<meta name="keywords" content="">
 	<meta name="author" content="Phoenixcoded" />
 	<!-- Favicon icon -->
-	<link rel="icon"  type="image/png"  href="<?php echo $ASSETS_URL; ?>assets/image/pngwave.png">
+	<link rel="icon" href="<?php echo $ASSETS_URL; ?>assets/images/favicon.ico" type="image/x-icon">
 
 	
 

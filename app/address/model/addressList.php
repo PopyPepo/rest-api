@@ -1,5 +1,5 @@
 <?php
-function adminList($conn){
+function addressList($conn){
 	$json = array();
 	$json['pagination'] = $_GET;
 	
@@ -7,10 +7,10 @@ function adminList($conn){
 	$page = isset($_GET["page"]) ? $_GET["page"] : 1;
 	$pageStart = ($page-1)*$perPage;
 
-	$where = "active>0";
+	$where = "1";//"active>0";
 	$limit = " LIMIT ".$pageStart.",".$perPage;
 	
-	$sql = "SELECT * FROM admin WHERE ".$where;
+	$sql = "SELECT * FROM address WHERE ".$where;
 
 	$query = $conn->query($sql.$limit);
 	$json["instance"] = array();
@@ -18,7 +18,7 @@ function adminList($conn){
 		$json["instance"][] = $instance;
 	}
 
-	$sqlCount = "SELECT count(idadmin) AS total FROM admin WHERE ".$where;
+	$sqlCount = "SELECT count(id_address) AS total FROM address WHERE ".$where;
 	$result = $conn->prepare($sqlCount); 
 	$result->execute();
 	$total = $result->fetchColumn();

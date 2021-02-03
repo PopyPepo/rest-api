@@ -1,11 +1,11 @@
 <?php
-function adminShow($conn){
+function memberShow($conn){
 	$json = array();
 
-	$idadmin = isset($_GET['idadmin']) ? $_GET['idadmin'] : null;
+	$id = isset($_GET['id']) ? addslashes($_GET['id']) : null;
 	$json["instance"] = (object)array();
-	if ($idadmin){
-		$sql = "SELECT * FROM admin WHERE idadmin=".$idadmin;
+	if ($id){
+		$sql = "SELECT * FROM member WHERE id='".$id."'";
 		$query = $conn->query($sql);
 		$json["instance"]=$query->fetch(PDO::FETCH_OBJ);
 	}else{

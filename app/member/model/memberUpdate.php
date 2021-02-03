@@ -1,13 +1,13 @@
 <?php
-function adminUpdate($conn){
+function memberUpdate($conn){
 	$json = array();
-	$idadmin = isset($_GET["idadmin"]) ? $_GET["idadmin"] : (isset($_POST["idadmin"]) ? $_POST["idadmin"] : null);
-	if ($idadmin && isset($_POST) && $_POST){
+	$id = isset($_GET["id"]) ? $_GET["id"] : (isset($_POST["id"]) ? $_POST["id"] : null);
+	if ($id && isset($_POST) && !empty($_POST)){
 		$col = "";	$val = "";	$c="";
 		include($conn->PATH."conf/getColumname.php");
-		$field = getColumname($conn, "admin");
+		$field = getColumname($conn, "member");
 		
-		if (isset($_POST["idadmin"])){	unset($_POST["idadmin"]);}
+		if (isset($_POST["id"])){	unset($_POST["id"]);}
 		if (isset($_POST["eventDate"])){	unset($_POST["eventDate"]);}
 		foreach ($_POST as $key=>$value) {	
 			if (in_array($key, $field)){
@@ -18,11 +18,11 @@ function adminUpdate($conn){
 		}
 
 		$col = str_replace("''", "NULL", $col);
-		$updateSql = "UPDATE admin SET ".$col." WHERE idadmin='".$idadmin."'";
+		$updateSql = "UPDATE member SET ".$col." WHERE id='".addslashes($id)."'";
 		
 		try {
 			$conn->exec($updateSql);
-			$json["update_id"] = $idadmin;
+			$json["update_id"] = $id;
 			$json["status"] = true;
 		} catch(PDOExecption $e) {
 			$conn->rollback();

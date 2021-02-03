@@ -26,10 +26,10 @@ function modelShow($conn, $tableIns, $fileIns){
 function '.$table.'Show($conn){
 	$json = array();
 
-	$'.$id->Column_name.' = isset($_GET[\''.$id->Column_name.'\']) ? $_GET[\''.$id->Column_name.'\'] : null;
+	$'.$id->Column_name.' = isset($_GET[\''.$id->Column_name.'\']) ? addslashes($_GET[\''.$id->Column_name.'\']) : null;
 	$json["instance"] = (object)array();
 	if ($'.$id->Column_name.'){
-		$sql = "SELECT * FROM '.$table.' WHERE '.$id->Column_name.'=".$'.$id->Column_name.';
+		$sql = "SELECT * FROM '.$table.' WHERE '.$id->Column_name.'=\'".$'.$id->Column_name.'."\'";
 		$query = $conn->query($sql);
 		$json["instance"]=$query->fetch(PDO::FETCH_OBJ);
 	}else{
