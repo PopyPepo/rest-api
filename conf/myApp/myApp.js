@@ -52,6 +52,7 @@ angular.module("myApp", ['ngSanitize','ngNotify', 'ngQuill']).filter('roundup', 
 }]).constant('NG_QUILL_CONFIG', {
 	/*
 	 * @NOTE: this config/output is not localizable.
+	 * <ng-quill-editor id="course_structure" name="course_structure" ng-model="course_requestInstance.course_structure" required="required"></ng-quill-editor>
 	 */
 	modules: {
 	  toolbar: [
