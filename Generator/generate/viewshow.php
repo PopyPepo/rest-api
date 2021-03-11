@@ -37,37 +37,30 @@ function viewshow($conn, $tableIns, $fileIns){
 
 	$txt .= '
 
-				<div class="card-body">
-					
-					<div class="table-responsive">
-						<table class="table table-show table-sm border-bottom">
-							<tbody>';
-								$sql = "SHOW FULL COLUMNS FROM ".$table." WHERE Extra!='auto_increment' ";
-								$excute = $conn->query($sql);
-								while ($instanc = $excute->fetch(PDO::FETCH_OBJ)){
-									if ($id->Column_name!=$instanc->Field){
-										// if (!in_array($instanc->Field, $colIndex)){
-										$label = '{{ massages.'.$table.'.'.$instanc->Field.' }}';
-										//$label = $instanc->Comment ? $instanc->Comment : $instanc->Field;
-										$td = '{{ '.$table.'Instance.'.$instanc->Field.' }}';
-										if (strpos($instanc->Comment, "@{")){
-											$dataSpri = explode("@{", $instanc->Comment);
-											$label = $dataSpri[0];
-											$td = '{{ '.$table.ucfirst($instanc->Field).'['.$table.'Instance.'.$instanc->Field.'] }}';
-										}
-										$txt .= '
-								<tr>
-									<th class="bg-info text-white" width="auto">'.$label.'</th>
-									<td>'.$td.'</td>
-								</tr>
-										';
-									}
+				<div class="card-body lead">
+					';
+						$sql = "SHOW FULL COLUMNS FROM ".$table." WHERE Extra!='auto_increment' ";
+						$excute = $conn->query($sql);
+						while ($instanc = $excute->fetch(PDO::FETCH_OBJ)){
+							if ($id->Column_name!=$instanc->Field){
+								// if (!in_array($instanc->Field, $colIndex)){
+								$label = '{{ massages.'.$table.'.'.$instanc->Field.' }}';
+								//$label = $instanc->Comment ? $instanc->Comment : $instanc->Field;
+								$td = '{{ '.$table.'Instance.'.$instanc->Field.' }}';
+								if (strpos($instanc->Comment, "@{")){
+									$dataSpri = explode("@{", $instanc->Comment);
+									$label = $dataSpri[0];
+									$td = '{{ '.$table.ucfirst($instanc->Field).'['.$table.'Instance.'.$instanc->Field.'] }}';
 								}
-							$txt .= '
-							</tbody>
-						</table>
-					</div>
-					
+								$txt .= '
+						<div class="row mb-3 mb-sm-1 border-bottom">
+							<div class="col-sm-3 text-left text-sm-right font-weight-bold bg-light">'.$label.'</div>
+							<div class="col-sm-9">'.$td.'</div>
+						</div>
+								';
+							}
+						}
+					$txt .= '
 				</div>
 
 				<div class="d-block card-footer">

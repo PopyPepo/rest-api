@@ -13,7 +13,7 @@ function viewcreate($conn, $tableIns, $fileIns){
 
 	$txt.='	
 
-				<div class="card-body">
+				<div class="card-body" ng-init="'.$table.'Show(\'<?php echo $ID; ?>\');">
 					<form name="'.$table.'Form" method="post" ng-submit="'.$table.'Insert('.$table.'Instance);">
 						<?php include("app/'.$table.'/view/_form.php"); ?>';
 

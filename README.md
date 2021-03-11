@@ -101,3 +101,7 @@
 เก็บไฟล์ที่มีการอัพโหลดผ่านระบบ
 
 ./src/{table_name}/{field_name}/{filename} 
+
+
+https://github.com/quilljs/quill/blob/develop/docs/docs/download.md
+	<ng-quill-editor ng-model="addressInstance.detail"></ng-quill-editor>

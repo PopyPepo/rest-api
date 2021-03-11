@@ -35,7 +35,7 @@ function controllerController($conn, $tableIns, $fileIns){
 	$sql = "SHOW FULL COLUMNS FROM ".$table." WHERE Extra!='auto_increment' ";
 	$excute = $conn->query($sql);
 	while ($instanc = $excute->fetch(PDO::FETCH_OBJ)){
-		if (isset($instanc->Default) && $instanc->Default!='CURRENT_TIMESTAMP' && $instanc->Default!='CURRENT_TIMESTAMP()'){
+		if (isset($instanc->Default) && strtoupper($instanc->Default)!='CURRENT_TIMESTAMP' && strtoupper($instanc->Default)!='CURRENT_TIMESTAMP()'){
 			$txt .= '
 	$scope.'.$table.'Instance.'.$instanc->Field.' = "'.$instanc->Default.'";';
 		}
@@ -53,7 +53,7 @@ function controllerController($conn, $tableIns, $fileIns){
 	$scope.pagination = {};
 	$scope.pagination.page = 1;
 
-	$scope.'.$table.'Insert = function(obj){
+	$scope.'.$table.'Insert = function(obj, act=true){
 		$http({
 			method: "POST",
 			url: PATH+"app/'.$table.'/model/?action='.$table.'Insert",
@@ -62,7 +62,10 @@ function controllerController($conn, $tableIns, $fileIns){
 		}).then(function successCallback(response) {
 			var last_id = response.data.last_id ? response.data.last_id : null;
 			if (last_id>0){
-				$window.location.href = LINK+"'.$table.'/show/"+last_id+"/";
+				if (act){
+					$window.location.href = LINK+"'.$table.'/show/"+last_id+"/";
+				}
+				$scope.displayNotify(\'success\', "เพิ่มข้อมูล'.$title.'ใหม่สำเร็จ");
 			}else{
 				$scope.displayNotify(\'warning\', "เพิ่มข้อมูล'.$title.'ใหม่ไม่สำเร็จ!!");
 				console.log(response.data.sql);
@@ -112,7 +115,7 @@ function controllerController($conn, $tableIns, $fileIns){
 		});
 	};
 
-	$scope.'.$table.'Update = function(obj){
+	$scope.'.$table.'Update = function(obj, act=true){
 		$http({
 			method: "POST",
 			url: PATH+"app/'.$table.'/model/?action='.$table.'Update",
@@ -121,7 +124,11 @@ function controllerController($conn, $tableIns, $fileIns){
 		}).then(function successCallback(response) {
 			var update_id = response.data.update_id ? response.data.update_id : null;
 			if (update_id){
-				$window.location.href = LINK+"'.$table.'/show/"+update_id+"/";
+				if (act){
+					$window.location.href = LINK+"'.$table.'/show/"+update_id+"/";
+				}
+				$scope.'.$table.'Show(obj.'.$id->Column_name.'); // $scope.'.$table.'List();
+				$scope.displayNotify(\'success\', "ปรับปรุงข้อมูล'.$title.'สำเร็จ");
 			}else{
 				$scope.displayNotify(\'warning\', "ปรับปรุงข้อมูล'.$title.'ไม่สำเร็จ!!");
 				console.log(response.data);
@@ -134,17 +141,20 @@ function controllerController($conn, $tableIns, $fileIns){
 		});
 	};
 
-	$scope.'.$table.'Delete = function(id){
+	$scope.'.$table.'Delete = function(obj, act=true){
 		$http({
 			method: "POST",
 			url: PATH+"app/'.$table.'/model/?action='.$table.'Delete",
-			data: $.param({'.$id->Column_name.': id}),
+			data: $.param({'.$id->Column_name.': obj.'.$id->Column_name.'}),
 			headers: {"Content-Type": "application/x-www-form-urlencoded"}
 		}).then(function successCallback(response) {
 			var status = response.data.status ? response.data.status : false;
-			alert(response.data.message);
 			if (status){
-				$window.location.href = LINK+"'.$table.'/list/";
+				if (act){
+					$window.location.href = LINK+"'.$table.'/list/";
+				}
+				$scope.'.$table.'List();
+				$scope.displayNotify(\'success\', "ลบข้อมูล'.$title.'สำเร็จ");
 			}else{
 				$scope.displayNotify(\'warning\', "ลบข้อมูล'.$title.'ไม่สำเร็จ!!");
 				console.log(response.data.sql);

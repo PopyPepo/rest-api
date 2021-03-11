@@ -44,6 +44,7 @@ function viewlist($conn, $tableIns, $fileIns){
 						<table class="table table-hover">
 							<thead class="thead-light">
 								<tr>
+									<th class="text-center"><i class="fas fa-bars"></i></th>
 									<th>#</th>';
 									$i=1;
 									$excuteS = $conn->query($sql);
@@ -61,12 +62,27 @@ function viewlist($conn, $tableIns, $fileIns){
 										$i++;
 									}
 								$txt .= '
-									<th class="text-center"><i class="fas fa-bars"></i></th>
 								</tr>
 							</thead>
 							<tbody>
 								<tr ng-repeat="'.$table.' in '.$table.'InstanceList">
-									<td>{{ '.$table.'.'.$id->Column_name.' }}</td>
+								<td class="text-center">
+									<div class="btn-group btn-group-sm" role="group" aria-label="Small button group">
+										<a href="<?php echo $LINK_URL; ?>'.$table.'/show/{{'.$table.'.'.$id->Column_name.'}}/"  title="แสดงข้อมูล" class="btn btn-info">
+											<i class="fas fa-info-circle"></i> 
+											
+										</a>
+										<a href="<?php echo $LINK_URL; ?>'.$table.'/create/{{'.$table.'.'.$id->Column_name.'}}/"  title="ตัดลอกข้อมูล" class="btn btn-secondary">
+											<i class="far fa-copy"></i>
+											
+										</a>
+										<button type="button" class="btn btn-danger" ng-confirm-click="คุณแน่ใจว่าต้องการลบข้อมูล ใช่หรือไม่?" title="ลบข้อมูล" confirmed-click="'.$table.'Delete('.$table.');">
+											<i class="fas fa-trash-alt"></i> 
+											
+										</button>
+									</div>
+								</td>
+								<td>{{ '.$table.'.'.$id->Column_name.' }}</td>
 									';
 									$i=1;
 									$excute = $conn->query($sql);
@@ -84,19 +100,6 @@ function viewlist($conn, $tableIns, $fileIns){
 										$i++;
 									}
 								$txt .= '
-
-									<td class="text-center">
-										<div class="btn-group btn-group-sm" role="group" aria-label="Small button group">
-											<a href="<?php echo $LINK_URL; ?>'.$table.'/show/{{'.$table.'.'.$id->Column_name.'}}/"  title="แสดงข้อมูล" class="btn btn-info">
-												<i class="fas fa-info-circle"></i> 
-												
-											</a>
-											<button type="button" class="btn btn-danger" ng-confirm-click="คุณแน่ใจว่าต้องการลบข้อมูล ใช่หรือไม่?" title="ลบข้อมูล" confirmed-click="'.$table.'Delete('.$table.'.'.$id->Column_name.');">
-												<i class="fas fa-trash-alt"></i> 
-												
-											</button>
-										</div>
-									</td>
 								</tr>
 							</tbody>
 						</table>

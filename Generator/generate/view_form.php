@@ -15,7 +15,7 @@ function view_form($conn, $tableIns, $fileIns){
 	}
 
 	$refTable = array();
-	$sqlRef = "SELECT COLUMN_NAME, REFERENCED_TABLE_NAME, REFERENCED_TABLE_NAME, REFERENCED_COLUMN_NAME FROM information_schema.key_column_usage WHERE REFERENCED_TABLE_NAME IS NOT NULL AND TABLE_SCHEMA='".$tableIns['database']."' AND TABLE_NAME='".$table."'";
+	$sqlRef = "SELECT COLUMN_NAME, REFERENCED_TABLE_NAME, REFERENCED_COLUMN_NAME FROM information_schema.key_column_usage WHERE REFERENCED_TABLE_NAME IS NOT NULL AND TABLE_SCHEMA='".$tableIns['database']."' AND TABLE_NAME='".$table."'";
 	$excute = $conn->query($sqlRef);
 	while ($instanc = $excute->fetch(PDO::FETCH_OBJ)){
 		$refTable[$instanc->COLUMN_NAME] = $instanc;
@@ -29,7 +29,7 @@ function view_form($conn, $tableIns, $fileIns){
 		$span = "";
 		$request = "";
 		
-		if ($instanc->Default!='CURRENT_TIMESTAMP' || $instanc->Extra=='' || $instanc->Extra==null){
+		if ((strtoupper($instanc->Default)!='CURRENT_TIMESTAMP' || strtoupper($instanc->Default)!='CURRENT_TIMESTAMP()') && $instanc->Extra=='' || $instanc->Extra==null){
 			if ($instanc->Null=='NO'){
 				$span = '<span class="text-danger">*</span>';
 				$request = ' required="required"';

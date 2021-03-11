@@ -7,17 +7,15 @@ $txt .= '<script src="<?php echo $ASSETS_URL; ?>app/'.$table.'/controller/'.$tab
 		<div class="col-sm-12">
 			<div class="card shadow">
 					
-				<div class="card-header d-flex align-items-center justify-content-between">
-					<h4 class="mb-0">{{ massages.default.show+massages.'.$table.'.domain }}</h4>
-					<?php include "app/'.$table.'/view/_menu.php"; ?>
+				<div class="card-header">
+					<h4>'.$title.'</h4>
+					<div class="card-header-right">
+						<?php include "app/'.$table.'/view/_menu.php"; ?>
+					</div>
 				</div>
 				
 '; 
-// <div class="card-header">
-// 					<div class="card-head-row card-tools-still-right">
-// 						<h4 class="card-title">'.$title.'</h4>
-// 					</div>
-// 				</div>
+
 			$boxL = '		
 						<button type="reset" class="btn btn-light bg-ligh float-right mr-1 shadow"><i class="fas fa-broom"></i> {{ massages.default.btn_clear }} </button>
 					</form>

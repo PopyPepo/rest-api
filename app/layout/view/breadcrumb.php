@@ -12,7 +12,8 @@
 
 					<li class="breadcrumb-item">
 						<a href="<?php echo $LINK_URL.$DOMAIN; ?>/">
-							{{ massages.default['<?php echo $DOMAIN=='layout' ? 'domain' : $DOMAIN ?>'] }}
+							<!-- {{ massages.default['<?php //echo $DOMAIN=='layout' ? 'domain' : $DOMAIN ?>'] }} -->
+							<?php echo "{{ massages['".$DOMAIN."']['domain'] }}"?>
 						</a>
 					</li>
 
