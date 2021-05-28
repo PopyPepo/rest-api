@@ -45,6 +45,7 @@ function viewlist($conn, $tableIns, $fileIns){
 							<thead class="thead-light">
 								<tr>
 									<th class="text-center"><i class="fas fa-bars"></i></th>
+									<!-- <th class="text-center">สถานะ</th> -->
 									<th>#</th>';
 									$i=1;
 									$excuteS = $conn->query($sql);
@@ -66,40 +67,48 @@ function viewlist($conn, $tableIns, $fileIns){
 							</thead>
 							<tbody>
 								<tr ng-repeat="'.$table.' in '.$table.'InstanceList">
-								<td class="text-center">
-									<div class="btn-group btn-group-sm" role="group" aria-label="Small button group">
-										<a href="<?php echo $LINK_URL; ?>'.$table.'/show/{{'.$table.'.'.$id->Column_name.'}}/"  title="แสดงข้อมูล" class="btn btn-info">
-											<i class="fas fa-info-circle"></i> 
-											
-										</a>
-										<a href="<?php echo $LINK_URL; ?>'.$table.'/create/{{'.$table.'.'.$id->Column_name.'}}/"  title="ตัดลอกข้อมูล" class="btn btn-secondary">
-											<i class="far fa-copy"></i>
-											
-										</a>
-										<button type="button" class="btn btn-danger" ng-confirm-click="คุณแน่ใจว่าต้องการลบข้อมูล ใช่หรือไม่?" title="ลบข้อมูล" confirmed-click="'.$table.'Delete('.$table.');">
-											<i class="fas fa-trash-alt"></i> 
-											
-										</button>
-									</div>
-								</td>
-								<td>{{ '.$table.'.'.$id->Column_name.' }}</td>
-									';
-									$i=1;
-									$excute = $conn->query($sql);
-									while ($instanc = $excute->fetch(PDO::FETCH_OBJ)){
+									<td class="text-center">
+										<div class="btn-group btn-group-sm" role="group" aria-label="Small button group">
+											<a href="<?php echo $LINK_URL; ?>'.$table.'/show/{{'.$table.'.'.$id->Column_name.'}}/"  title="แสดงข้อมูล" class="btn btn-info">
+												<i class="fas fa-info-circle"></i> 
+												
+											</a>
+											<a href="<?php echo $LINK_URL; ?>'.$table.'/create/{{'.$table.'.'.$id->Column_name.'}}/"  title="ตัดลอกข้อมูล" class="btn btn-secondary">
+												<i class="far fa-copy"></i>
+												
+											</a>
+											<button type="button" class="btn btn-danger" ng-confirm-click="คุณแน่ใจว่าต้องการลบข้อมูล ใช่หรือไม่?" title="ลบข้อมูล" confirmed-click="'.$table.'Delete('.$table.');">
+												<i class="fas fa-trash-alt"></i> 
+												
+											</button>
+										</div>
+									</td>
+									<!-- <td class="text-center">
+										<div class="custom-control custom-switch">
+											<input type="checkbox" class="custom-control-input" id="status{{ '.$table.'.'.$id->Column_name.' }}" ng-model="'.$table.'.status" ng-true-value="\'1\'" ng-false-value="\'0\'" ng-change="'.$table.'Update({'.$id->Column_name.': '.$table.'.'.$id->Column_name.', status: '.$table.'.status}, false);">
+											<label class="custom-control-label" for="status{{ '.$table.'.'.$id->Column_name.' }}">
+												{{ '.$table.'Status['.$table.'.status] }}
+											</label>
+										</div>
+									</td> -->
+									<td>{{ '.$table.'.'.$id->Column_name.' }}</td>
+										';
+										$i=1;
+										$excute = $conn->query($sql);
+										while ($instanc = $excute->fetch(PDO::FETCH_OBJ)){
 
-										$td = '{{ '.$table.'.'.$instanc->Field.' }}';
-										if (strpos($instanc->Comment, "@{")){
-											$dataSpri = explode("@{", $instanc->Comment);
-											$label = $dataSpri[0];
-											$td = '{{ '.$table.ucfirst($instanc->Field).'['.$table.'.'.$instanc->Field.'] }}';
+											$td = '{{ '.$table.'.'.$instanc->Field.' }}';
+											if (strpos($instanc->Comment, "@{")){
+												$dataSpri = explode("@{", $instanc->Comment);
+												$label = $dataSpri[0];
+												$td = '{{ '.$table.ucfirst($instanc->Field).'['.$table.'.'.$instanc->Field.'] }}';
+											}
+											$txt .= '
+										<td>'.$td.'</td>';
+											if ($i>=5) break;
+											$i++;
 										}
-										$txt .= '
-									<td>'.$td.'</td>';
-										if ($i>=5) break;
-										$i++;
-									}
-								$txt .= '
+									$txt .= '
 								</tr>
 							</tbody>
 						</table>
