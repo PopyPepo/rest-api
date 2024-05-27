@@ -23,6 +23,7 @@
 
 ไฟล์ .htaccess บรรทัดที่ 3 และ 7 แก้ไข ชื่อโฟลเดอร์โปรเจค
 
+ 	
 	<IfModule mod_rewrite.c>
 		RewriteEngine On
 		RewriteBase /ชื่อโฟลเดอร์โปรเจค/
@@ -32,9 +33,12 @@
 		RewriteRule . /ชื่อโฟลเดอร์โปรเจค/index.php [L]
 		php_flag register_globals on
 		php_value session.auto_start 1
+		php_value upload_max_filesize 30M
+		php_value post_max_size 30M
 	</IfModule>
 
-	กรณีนำขึ้น HOST
+
+	กรณีไม่ได้อยู่ใน subdirectory ลบ ชื่อโฟลเดอร์โปรเจค ออก
 	<IfModule mod_rewrite.c>
 		RewriteEngine On
 		RewriteBase /
@@ -43,7 +47,9 @@
 		RewriteCond %{REQUEST_FILENAME} !-d
 		RewriteRule . /index.php [L]
 		php_flag register_globals on
-		php_value session.auto_start 1
+		#php_value session.auto_start 1
+		#php_value upload_max_filesize 30M
+		#php_value post_max_size 30M
 	</IfModule>
 
 
