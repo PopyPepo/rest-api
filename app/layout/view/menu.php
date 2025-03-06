@@ -15,7 +15,7 @@
 				continue;
 			echo '
 			<li class="nav-item">
-				<a href="'.$LINK_URL.'" class="nav-link "><span class="pcoded-micon"><i class="feather icon-list"></i></span><span class="pcoded-mtext">'.$moule.'</span></a>
+				<a href="'.$LINK_URL.$moule.'/" class="nav-link "><span class="pcoded-micon"><i class="feather icon-list"></i></span><span class="pcoded-mtext">'.$moule.'</span></a>
 			</li>';
 
 		}
