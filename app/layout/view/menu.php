@@ -5,7 +5,23 @@
 	<li class="nav-item">
 		<a href="<?php echo $LINK_URL; ?>" class="nav-link "><span class="pcoded-micon"><i class="feather icon-home"></i></span><span class="pcoded-mtext">Dashboard</span></a>
 	</li>
-	<li class="nav-item pcoded-hasmenu">
+	<?php
+		$directory = './app'; // Replace with the actual directory path
+		// Iterate over directories
+		$directories = glob($directory . '/*', GLOB_ONLYDIR);
+		foreach ($directories as $dir) {
+			$moule = str_replace($directory."/", "", $dir); //"Directory: $dir\n";
+			if ($moule)
+				continue;
+			echo '
+			<li class="nav-item">
+				<a href="'.$LINK_URL.'" class="nav-link "><span class="pcoded-micon"><i class="feather icon-list"></i></span><span class="pcoded-mtext">'.$moule.'</span></a>
+			</li>';
+
+		}
+		
+	?>
+	<!-- <li class="nav-item pcoded-hasmenu">
 		<a href="#!" class="nav-link "><span class="pcoded-micon"><i class="feather icon-layout"></i></span><span class="pcoded-mtext">Page layouts</span></a>
 		<ul class="pcoded-submenu">
 			<li><a href="layout-vertical.html" target="_blank">Vertical</a></li>
@@ -64,6 +80,6 @@
 			<li><a href="auth-signin.html" target="_blank">Sign in</a></li>
 		</ul>
 	</li>
-	<li class="nav-item"><a href="sample-page.html" class="nav-link "><span class="pcoded-micon"><i class="feather icon-sidebar"></i></span><span class="pcoded-mtext">Sample page</span></a></li>
+	<li class="nav-item"><a href="sample-page.html" class="nav-link "><span class="pcoded-micon"><i class="feather icon-sidebar"></i></span><span class="pcoded-mtext">Sample page</span></a></li> -->
 
 </ul>
