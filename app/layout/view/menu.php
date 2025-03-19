@@ -11,7 +11,7 @@
 		$directories = glob($directory . '/*', GLOB_ONLYDIR);
 		foreach ($directories as $dir) {
 			$moule = str_replace($directory."/", "", $dir); //"Directory: $dir\n";
-			if ($moule)
+			if (!$moule || $moule=='layout')
 				continue;
 			echo '
 			<li class="nav-item">
